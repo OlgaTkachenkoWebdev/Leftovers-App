@@ -24,9 +24,8 @@ nav {
   --bs-navbar-brand-hover-color: #4E4E4E;
 }
 
-.navbar-brand {
-color: #FFFFFF;
-font-size: 1.8rem;
+.homeLogo {
+  --bs-navbar-brand-font-size: 1.7rem;
 }
 
 .userLinks {

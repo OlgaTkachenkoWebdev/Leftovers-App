@@ -19,7 +19,6 @@ function SignUp() {
             <p>
               <b>Right🥘vers</b>
             </p>
-            <img src='./logo-blk.png' alt="leftovers-logo" height={40} />
           </div>
         </Col>
         <Col id='signup-form'>

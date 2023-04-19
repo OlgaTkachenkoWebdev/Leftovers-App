@@ -14,7 +14,7 @@ function NavBar() {
   return (
     <Navbar>
       <Container className="navbarLinks">
-        <Navbar.Brand href="/home">Right🥘vers</Navbar.Brand>
+        <Navbar.Brand href="/home" className="homeLogo">Right🥘vers</Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
             <Nav.Item className="navLinks">
