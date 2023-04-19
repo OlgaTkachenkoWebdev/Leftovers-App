@@ -16,14 +16,18 @@ nav {
   justify-content: space-between;
 }
 
+.navbarLinks {
+  --bs-navbar-color: rgb(255 255 255 / 100%);
+  --bs-navbar-hover-color: #4E4E4E;
+  --bs-navbar-active-color: rgb(255 255 255 / 50%);
+  --bs-navbar-brand-color: rgba(255, 255, 255, 0.9);
+  --bs-navbar-brand-hover-color: #4E4E4E;
+}
+
 .navbar-brand {
 color: #FFFFFF;
 font-size: 1.8rem;
 }
-
-.navbar-brand:hover {
-  color: #4E4E4E
-  }
 
 .userLinks {
   color: #FFFFFF;
@@ -56,4 +60,22 @@ font-size: 1.8rem;
 
 .navLinks:hover {
   opacity: 100%;
+}
+
+#footer {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerLinks {
+  font-weight: 400;
+  opacity: 50%;
+  font-size: 1.1rem;
+  --bs-navbar-color: rgb(255 255 255 / 100%);
+  --bs-navbar-hover-color: #4E4E4E;
+  --bs-navbar-active-color: rgb(255 255 255 / 50%);
+  --bs-navbar-brand-color: rgba(255, 255, 255, 0.9);
+  --bs-navbar-brand-hover-color: #4E4E4E;
 }

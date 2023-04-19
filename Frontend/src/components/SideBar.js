@@ -30,15 +30,12 @@ function SideBar() {
     console.log("storedLeftovers", storedLeftovers)
     if (storedLeftovers) {
       leftoverElements.push(
-        <p>
+        <div>
           <LeftoverElement key={leftover} leftover={Object.keys(JSON.parse(storedLeftovers))} />
-        </p>);
+        </div>);
     }
     return leftoverElements;
   }
-
-  console.log(listLeftovers)
-
 
   return (
     <div className="sideBar col-3">

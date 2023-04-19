@@ -4,7 +4,7 @@ Welcome to Leftover App! A perfect solution for reducing food waste by giving yo
 ## Getting Started
 
 1. In the Backend folder create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the .env file with your correct local information 
+2. Update the `.env` file with your correct local information 
 3. Install dependencies: `npm i`
 4. Fix to binaries for sass: `npm rebuild node-sass`
 5. Run the server: `npm run local`

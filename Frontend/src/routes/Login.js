@@ -1,29 +1,31 @@
 import LoginForm from "../components/LoginForm";
+import WelcomeFooter from "../components/Footer";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./signup-login.css";
-import RootNavBar from "../components/RootNavBar";
+import "./SignUp-LogIn.css";
 
 function Login() {
   return (
     <div className="login-page">
-      <RootNavBar />
       <div className="row g-0">
         <Col id="message-container">
           <div className="align-self-center" id="message">
             <p>
-              <b>Fit Cooking Back</b>
+              <b>Reduce food waste</b>
             </p>
             <p>
-              <b>Into Your Schedule with</b>
+              <b>with</b>
             </p>
-            <img src="./logo-blk.png" alt="leftovers-logo" height={40} />
+            <p>
+              <b>Right🥘vers</b>
+            </p>
           </div>
         </Col>
         <Col id="login-form">
           <LoginForm />
         </Col>
       </div>
+      <WelcomeFooter />
     </div>
   );
 }
