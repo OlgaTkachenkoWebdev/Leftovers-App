@@ -1,8 +1,10 @@
-import LoginForm from "../components/LoginForm";
-import WelcomeFooter from "../components/Footer";
-import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./SignUp-LogIn.css";
+import "./styles/SignUp-LogIn.css";
+
+import Col from "react-bootstrap/Col";
+
+import LoginForm from "../components/LoginForm";
+import Footer from "../components/Footer";
 
 function Login() {
   return (
@@ -25,7 +27,7 @@ function Login() {
           <LoginForm />
         </Col>
       </div>
-      <WelcomeFooter />
+      <Footer />
     </div>
   );
 }

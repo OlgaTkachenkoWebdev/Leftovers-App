@@ -1,10 +1,11 @@
-import Row from "react-bootstrap/esm/Row";
-import Col from "react-bootstrap/esm/Col";
+import "bootstrap/dist/css/bootstrap.min.css";
+import './styles/ShoppingList.css';
+
+import { Fragment } from "react";
+
 import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
-import "bootstrap/dist/css/bootstrap.min.css";
-import './ShoppingList.css';
-import { Fragment } from "react";
+
 import ShoppingListComp from "../components/ShoppingListComp";
 
 

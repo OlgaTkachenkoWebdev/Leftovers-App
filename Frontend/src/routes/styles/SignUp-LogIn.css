@@ -60,7 +60,8 @@
   justify-content: center;
 }
 .btn-div{
-  padding-top: 2em;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
 }
 p{
   margin-top:1rem;
@@ -75,10 +76,6 @@ p{
   
 }
 
-.emailForm {
+.emailForm, .nameForm {
   margin-top: 5vh;
-}
-
-.link {
-  margin-top: 2vh;
 }

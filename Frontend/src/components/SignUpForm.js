@@ -34,7 +34,7 @@ function SignUpForm() {
       <div className="form-label">
         <h4>Sign Up</h4>
       </div>
-      <Form.Group className="mb-3" controlId="formBasicName">
+      <Form.Group className="mb-3 nameForm" controlId="formBasicName">
         <Form.Label>Full Name</Form.Label>
         <Form.Control
           type="text"

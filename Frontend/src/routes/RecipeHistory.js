@@ -1,12 +1,13 @@
+import './styles/Recipe-History.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import { useContext, useEffect } from 'react';
 
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
-import "bootstrap/dist/css/bootstrap.min.css";
 import MyRecipesElement from "../components/MyRecipesElement";
-import './Recipe-History.css'
 import { userRecipesContext } from "../providers/UsersRecipesProvider";
 
 

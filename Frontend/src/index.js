@@ -1,22 +1,32 @@
+import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
+
 import reportWebVitals from "./reportWebVitals";
-import Login from "./routes/Login";
+
 import Home from "./routes/Home";
+import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
+import About from "./routes/About";
 import ShoppingList from "./routes/ShoppingList";
+import RecipeHistory from "./routes/RecipeHistory";
+
 import LeftoversProvider from "./providers/LeftoversProvider";
 import RecipesProvider from "./providers/RecipesProvider";
 import UserRecipesProvider from "./providers/UsersRecipesProvider";
-import RecipeHistory from "./routes/RecipeHistory";
 import AuthProvider from "./providers/AuthProvider";
 import FiltersProvider from "./providers/FiltersProvider";
+
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <SignUp />,
+  },
+  {
+    path: "about",
+    element: <About />,
   },
   {
     path: "home",
