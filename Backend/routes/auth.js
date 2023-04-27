@@ -5,7 +5,9 @@ const User = require("../models/users");
 
 router.get("/", (req, res) => {});
 
+
 router.get("/login", (req, res) => {});
+
 
 router.post("/signup", (req, res) => {
   const name = req.body.name;
@@ -19,12 +21,13 @@ router.post("/signup", (req, res) => {
     password: hashedPassword,
   })
     .then((data) => {
-      res.status(201).json("it works");
+      res.status(201).json(data);
     })
     .catch((err) => {
       res.status(500);
     });
 });
+
 
 router.post("/login", (req, res) => {
   const email = req.body.email;

@@ -3,7 +3,7 @@ import "./styles/SignUp-LogIn.css";
 
 import Col from "react-bootstrap/Col";
 
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/Auth/LoginForm";
 import Footer from "../components/Footer";
 
 function Login() {

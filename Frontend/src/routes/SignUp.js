@@ -3,7 +3,7 @@ import "./styles/SignUp-LogIn.css";
 
 import Col from 'react-bootstrap/Col';
 
-import SignUpForm from "../components/SignUpForm";
+import SignUpForm from "../components/Auth/SignUpForm";
 import Footer from "../components/Footer";
 
 function SignUp() {
@@ -12,7 +12,7 @@ function SignUp() {
       <div className='row g-0'>
         <Col id='message-container'>
           < div id='message'>
-          <p>
+            <p>
               <b>Reduce food waste</b>
             </p>
             <p>

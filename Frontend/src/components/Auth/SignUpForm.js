@@ -1,35 +1,44 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
-import axios from "axios";
-import { redirect } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import Alert from 'react-bootstrap/Alert';
+
+import { validate } from "./helpers/validate";
 
 function SignUpForm() {
+
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [emailReg, setEmailReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
-  const [confirmPass, setConfirmPass] = useState("");
+  const [error, setError] = useState("");
 
-  const navigate = useNavigate();
+  const invalidFormMessage = validate(emailReg, name, passwordReg);
 
   const register = (event) => {
     event.preventDefault();
     const data = { email: emailReg, name: name, password: passwordReg };
 
-    axios
-      .post("http://localhost:8080/signup", data)
-      .then(function (response) {
-        console.log(response);
+    if (invalidFormMessage) {
+      setError(invalidFormMessage);
+    } else {
+      axios
+        .post("/signup", data)
+        .then(() => {
+          navigate("/home");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
 
-        navigate("/login");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
   return (
+    <>
     <Form className="form" onSubmit={register}>
       <div className="form-label">
         <h4>Sign Up</h4>
@@ -80,7 +89,11 @@ function SignUpForm() {
           Already have an account? <b>Login</b>
         </Link>
       </div>
+    <Alert key={"danger"} variant={"danger"} className="form-alert">
+      {error}
+    </Alert>
     </Form>
+    </>
   );
 }
 

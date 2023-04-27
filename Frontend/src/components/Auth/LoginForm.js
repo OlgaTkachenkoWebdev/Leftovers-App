@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
+import axios from "axios";
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { authContext } from "../providers/AuthProvider";
+import { authContext } from "../../providers/AuthProvider";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -13,7 +13,9 @@ function LoginForm() {
   const navigate = useNavigate();
 
   const loginUser = (event) => {
+
     event.preventDefault();
+
     axios
       .post("http://localhost:8080/login", {
         email: email,
@@ -22,6 +24,7 @@ function LoginForm() {
       .then(function (response) {
         console.log(response.data);
         login(response.data.username, response.data.userid);
+        
         window.localStorage.setItem(
           "user_info",
           JSON.stringify({

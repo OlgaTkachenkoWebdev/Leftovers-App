@@ -15,9 +15,9 @@ function Footer() {
         <Container id="footer">
           <Nav className="footer-links">
             {location.pathname.includes("about") ? <Nav.Link href="/">Home</Nav.Link> : <Nav.Link href="/about">About</Nav.Link>}
-            <Nav.Link href="https://www.linkedin.com/in/olga-tkachenko-078016269/"><i class="fa-brands fa-linkedin"></i></Nav.Link>
-            <Nav.Link href="https://github.com/OlgaTkachenkoWebdev"><i class="fa-brands fa-github"></i></Nav.Link>
-            <Nav.Link href="mailto:olga.tkachenko.webdev@gmail.com?subject=Love%20your%20website!&body=Hi%20Olga%2C"><i class="fa-regular fa-envelope"></i></Nav.Link>
+            <Nav.Link href="https://www.linkedin.com/in/olga-tkachenko-078016269/"><i className="fa-brands fa-linkedin"></i></Nav.Link>
+            <Nav.Link href="https://github.com/OlgaTkachenkoWebdev"><i className="fa-brands fa-github"></i></Nav.Link>
+            <Nav.Link href="mailto:olga.tkachenko.webdev@gmail.com?subject=Love%20your%20website!&body=Hi%20Olga%2C"><i className="fa-regular fa-envelope"></i></Nav.Link>
           </Nav>
         </Container>
       </Navbar>
