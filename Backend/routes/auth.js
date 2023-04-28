@@ -47,10 +47,10 @@ router.post("/login", (req, res) => {
             username: user.dataValues.name,
           });
         } else {
-          res.status(401).json("wrong password");
+          res.status(401).json("Wrong password");
         }
       } else {
-        res.status(401).json("wrong email or user not created");
+        res.status(401).json("Wrong email or user does not exist");
       }
     })
     .catch((err) => {

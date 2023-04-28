@@ -1,44 +1,42 @@
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { authContext } from "../../providers/AuthProvider";
+import Alert from 'react-bootstrap/Alert';
+
+import { validate } from "./helpers/validate";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useContext(authContext);
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
 
-  const loginUser = (event) => {
+  const invalidFormMessage = validate(email, "name", password);
 
+  const loginUser = (event) => {
     event.preventDefault();
 
-    axios
-      .post("http://localhost:8080/login", {
-        email: email,
-        password: password,
-      })
-      .then(function (response) {
-        console.log(response.data);
-        login(response.data.username, response.data.userid);
-        
-        window.localStorage.setItem(
-          "user_info",
-          JSON.stringify({
-            name: response.data.username,
-            id: response.data.userid,
-          })
-        );
-
-        navigate("/home");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+    if (invalidFormMessage) {
+      setError(invalidFormMessage);
+    } else {
+      axios
+        .post("/login", {
+          email: email,
+          password: password,
+        })
+        .then(() => {
+          navigate("/home");
+        })
+        .catch(function (error) {
+          const errorMessage = error.response.data;
+          setError(errorMessage);
+        });
+    }
+  }
 
   return (
     <Form className="form" onSubmit={loginUser}>
@@ -68,6 +66,7 @@ function LoginForm() {
           placeholder="Password"
         />
       </Form.Group>
+
       <div className="btn-div">
         <Button variant="primary" id="form-btn" type="submit">
           <p>Login</p>
@@ -78,6 +77,7 @@ function LoginForm() {
           Don't already have an account? Click here to <b>Sign Up.</b>
         </Link>
       </div>
+      {error && <Alert key={"danger"} variant={"danger"} className="form-alert">{error}</Alert>}
     </Form>
   );
 }

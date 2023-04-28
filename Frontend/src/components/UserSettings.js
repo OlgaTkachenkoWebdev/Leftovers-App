@@ -4,7 +4,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Icon from "@mdi/react";
 import { mdiAccountCog } from "@mdi/js";
 import { Link } from "react-router-dom";
-import { authContext } from "../providers/AuthProvider";
 
 const UserToggle = React.forwardRef(({ children, onClick }, ref) => (
   <div>
@@ -24,7 +23,6 @@ const UserToggle = React.forwardRef(({ children, onClick }, ref) => (
 const UserMenu = React.forwardRef(
   ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
     const [value, setValue] = useState("");
-    const { logout } = useContext(authContext);
     return (
       <div
         ref={ref}
@@ -33,7 +31,7 @@ const UserMenu = React.forwardRef(
         aria-labelledby={labeledBy}
       >
         <ul className="userMenu">
-          <Link to="/login" onClick={logout}>
+          <Link to="/login" >
             Sign Out
           </Link>
         </ul>

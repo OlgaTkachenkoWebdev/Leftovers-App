@@ -15,7 +15,6 @@ import RecipeHistory from "./routes/RecipeHistory";
 import LeftoversProvider from "./providers/LeftoversProvider";
 import RecipesProvider from "./providers/RecipesProvider";
 import UserRecipesProvider from "./providers/UsersRecipesProvider";
-import AuthProvider from "./providers/AuthProvider";
 import FiltersProvider from "./providers/FiltersProvider";
 
 
@@ -49,7 +48,6 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthProvider>
       <FiltersProvider>
       <RecipesProvider>
         <LeftoversProvider>
@@ -59,7 +57,6 @@ root.render(
         </LeftoversProvider>
       </RecipesProvider>
       </FiltersProvider>
-    </AuthProvider>
   </React.StrictMode>
 );
 
