@@ -2,6 +2,7 @@ import "./MyRecipesElement.css";
 import { useContext, useEffect } from 'react';
 import { userRecipesContext } from "../providers/UsersRecipesProvider";
 import { ingredientsContext } from "../providers/IngredientsProvider";
+import PropTypes from 'prop-types'; 
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,6 +14,7 @@ import Icon from '@mdi/react';
 import { mdiClose, mdiCircleSmall } from '@mdi/js';
 
 function MyRecipesElement(props) {
+  const myRecipe = props.recipe;
   const { deleteUserRecipes } = useContext(userRecipesContext);
   const { getIngredients, ingredients } = useContext(ingredientsContext);
 
@@ -23,8 +25,8 @@ function MyRecipesElement(props) {
   }
   let instructionsElements = [];
 
-  if (props.recipe.instructions && props.recipe.instructions > 0) {
-    const instructionsSteps = props.recipe.instructions.split('   ');
+  if (myRecipe.instructions && myRecipe.instructions > 0) {
+    const instructionsSteps = myRecipe.instructions.split('   ');
     for (let i = 1; i < instructionsSteps.length; i += 2) {
       instructionsElements.push(
         <div> <b>Step {instructionsSteps[i]}</b>: {instructionsSteps[i + 1]} </div>)
@@ -33,7 +35,7 @@ function MyRecipesElement(props) {
 
 
   useEffect(() => {
-    getIngredients(props.recipe.id)
+    getIngredients(myRecipe.id)
   }, [])
   const recipe = [{
     apiId: 634141, title: "Banana Oatmeal Breakfast Muffins", readyInMinutes: 45, image: "https://spoonacular.com/recipeImages/634141-312x231.jpg", missedIngredients: [{ "name": "oats", "amount": 2, "unit": "cups" }, { "name": "honey", "amount": 0.33333334, "unit": "cup" }, { "name": "bananas", "amount": 2, "unit": "" }, { "name": "almond milk", "amount": 2, "unit": "cups" }, { "name": "egg whites", "amount": 0.5, "unit": "cup" }, { "name": "protein powder", "amount": 2, "unit": "scoops" }, { "name": "baking powder", "amount": 1, "unit": "tsp" }, { "name": "cinnamon", "amount": 2, "unit": "tsp" }, { "name": "vanilla extract", "amount": 1, "unit": "tsp" }, { "name": "walnuts", "amount": 0.25, "unit": "cup" }, { "name": "raisins", "amount": 0.5, "unit": "cup" }], usedIngredients: [{ "name": "oats", "amount": 2, "unit": "cups" }], unusedIngredients: [], instructions: ["Preheat the oven to 400 degrees F (205 degrees C). Line a 12-cup muffin tin with paper liners.", "Combine flour, oats, sugar, baking powder, soda, and salt in a medium bowl; set aside.", "Beat egg lightly in a large bowl. Whisk in milk, oil, and vanilla.", "Stir in mashed bananas. Add the flour mixture and stir until just combined. Spoon batter into the prepared muffin cups, filling each 3/4 full.", "Bake in the preheated oven until tops spring back when lightly pressed, 18 to 20 minutes."
@@ -42,8 +44,8 @@ function MyRecipesElement(props) {
   function RecipieToggle() {
     return (
       <Row className='recipeElement' onClick={useAccordionButton()}>
-        <Col xs="auto"><img src={props.recipe.image} className="smallPhoto" /></Col>
-        <Col xs={8}><h3 className="recipeName">{props.recipe.title}</h3></Col>
+        <Col xs="auto"><img src={myRecipe.image} className="smallPhoto" /></Col>
+        <Col xs={8}><h3 className="recipeName">{myRecipe.title}</h3></Col>
       </Row>
     );
   }
@@ -85,5 +87,9 @@ function MyRecipesElement(props) {
     
   )
 }
+
+// MyRecipesElement.propTypes = {
+//   myRecipe: PropTypes.object.isRequired
+// };
 
 export default MyRecipesElement;

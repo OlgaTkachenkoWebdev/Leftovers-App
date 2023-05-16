@@ -32,7 +32,8 @@ function SignUpForm() {
           navigate("/home");
         })
         .catch((error) => {
-          console.log(error);
+          const errorMessage = error.response.data;
+          setError(errorMessage);
         });
     }
 

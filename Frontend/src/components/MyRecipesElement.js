@@ -1,6 +1,7 @@
 import "./MyRecipesElement.css";
 import { useContext } from 'react';
 import { userRecipesContext } from "../providers/UsersRecipesProvider";
+import PropTypes from 'prop-types'; 
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,6 +13,8 @@ import Icon from '@mdi/react';
 import { mdiClose, mdiCircleSmall } from '@mdi/js';
 
 function MyRecipesElement(props) {
+  const myRecipe = props.recipe;
+  console.log("myRecipe", typeof myRecipe)
   const { deleteUserRecipes, userRecipes } = useContext(userRecipesContext);
 
   const addToShoppingList = function(name) {
@@ -39,8 +42,8 @@ function MyRecipesElement(props) {
   }
 
   let instructionsElements = [];
-  if (props.recipe.instructions && props.recipe.instructions.length > 0) {
-    const instructionsSteps = props.recipe.instructions.split('   ');
+  if (myRecipe.instructions && myRecipe.instructions.length > 0) {
+    const instructionsSteps = myRecipe.instructions.split('   ');
     for (let i = 1; i < instructionsSteps.length; i += 2) {
       instructionsElements.push(
         <div> <b>Step {instructionsSteps[i]}</b>: {instructionsSteps[i + 1]} </div>)
@@ -67,8 +70,8 @@ function MyRecipesElement(props) {
   function RecipieToggle() {
     return (
       <Row className='recipeElement' onClick={useAccordionButton()}>
-        <Col xs="auto"><img src={props.recipe.image} className="smallPhoto" /></Col>
-        <Col xs={8}><h3 className="recipeName">{props.recipe.title}</h3></Col>
+        <Col xs="auto"><img src={myRecipe.image} className="smallPhoto" /></Col>
+        <Col xs={8}><h3 className="recipeName">{myRecipe.title}</h3></Col>
       </Row>
     );
   }
@@ -77,7 +80,7 @@ function MyRecipesElement(props) {
       <div className="recipeContainer">
         <div className="recipeToggle">
           <RecipieToggle />
-          <Icon path={mdiClose} size={1.2} className="deleteReceipt" onClick={() => deleteUserRecipes(props.recipe.id)} />
+          <Icon path={mdiClose} size={1.2} className="deleteReceipt" onClick={() => deleteUserRecipes(myRecipe.id)} />
         </div>
         <Accordion.Collapse >
           <Container className="instructions" >
@@ -100,5 +103,9 @@ function MyRecipesElement(props) {
     </Accordion>
   )
 }
+
+MyRecipesElement.propTypes = {
+  recipe: PropTypes.object.isRequired
+};
 
 export default MyRecipesElement;

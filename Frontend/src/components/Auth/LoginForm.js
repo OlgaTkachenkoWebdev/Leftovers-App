@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -15,13 +15,13 @@ function LoginForm() {
 
   const navigate = useNavigate();
 
-  const invalidFormMessage = validate(email, "name", password);
-
   const loginUser = (event) => {
     event.preventDefault();
 
-    if (invalidFormMessage) {
-      setError(invalidFormMessage);
+    if (validate(email, "email")) {
+      setError(validate(email, "email"));
+    } else if (validate(password, "password")) {
+      setError(validate(password, "password"));
     } else {
       axios
         .post("/login", {
@@ -39,7 +39,7 @@ function LoginForm() {
   }
 
   return (
-    <Form className="form" onSubmit={loginUser}>
+    <Form data-testid="login-form" className="form" onSubmit={loginUser}>
       <div className="form-label">
         <h4>Login</h4>
       </div>
@@ -50,6 +50,7 @@ function LoginForm() {
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
+            setError("");
           }}
           placeholder="Enter email"
         />
@@ -62,13 +63,14 @@ function LoginForm() {
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
+            setError("");
           }}
           placeholder="Password"
         />
       </Form.Group>
 
       <div className="btn-div">
-        <Button variant="primary" id="form-btn" type="submit">
+        <Button data-testid="login-btn" variant="primary" id="form-btn" type="submit">
           <p>Login</p>
         </Button>
       </div>
@@ -77,7 +79,7 @@ function LoginForm() {
           Don't already have an account? Click here to <b>Sign Up.</b>
         </Link>
       </div>
-      {error && <Alert key={"danger"} variant={"danger"} className="form-alert">{error}</Alert>}
+      {error && <Alert data-testid="error-message" key={"danger"} variant={"danger"} className="form-alert">{error}</Alert>}
     </Form>
   );
 }
