@@ -40,7 +40,7 @@ function SignUpForm() {
   };
   return (
     <>
-      <Form className="form" onSubmit={register}>
+      <Form data-testid="signup-form" className="form" onSubmit={register}>
         <div className="form-label">
           <h4>Sign Up</h4>
         </div>
@@ -81,7 +81,7 @@ function SignUpForm() {
         </Form.Group>
 
         <div className="btn-div">
-          <Button variant="primary" id="form-btn" type="submit">
+          <Button data-testid="signup-btn" variant="primary" id="form-btn" type="submit">
             <p>Sign Up</p>
           </Button>
         </div>
@@ -90,7 +90,7 @@ function SignUpForm() {
             Already have an account? <b>Login</b>
           </Link>
         </div>
-        {error && <Alert key={"danger"} variant={"danger"} className="form-alert">{error}</Alert>}
+        {error && <Alert data-testid="error-message" key={"danger"} variant={"danger"} className="form-alert">{error}</Alert>}
       </Form>
     </>
   );

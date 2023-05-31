@@ -1,19 +1,15 @@
 import React from "react";
-import axios from 'axios';
+import AxiosMock from 'axios';
 
-import { render, screen, cleanup, fireEvent } from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 import { BrowserRouter } from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 
 import LoginForm from "../../components/Auth/LoginForm";
-import { validate } from "../../components/Auth/helpers/validate";
 
 afterEach(cleanup);
 
-
-
 describe("LoginForm", () => {
-
 
   const user =
   {
@@ -21,9 +17,7 @@ describe("LoginForm", () => {
     password: "123"
   };
 
-  const onSave = jest.fn();
-
-  it.skip("renders without crashing", () => {    
+  it("renders without crashing", () => {
     const { getByTestId } = render(
       <BrowserRouter>
         <LoginForm />
@@ -32,12 +26,12 @@ describe("LoginForm", () => {
     expect(getByTestId("login-form")).toBeInTheDocument();
   });
 
-  it.skip("renders a login button", () => {
+  it("renders a login button", () => {
     const { getByText } = render(<Button>Login</Button>);
     expect(getByText("Login")).toBeVisible("form-btn");
   });
 
-  it.skip("renders a clickable button", () => {
+  it("renders a clickable button", () => {
     const handleClick = jest.fn();
     const { getByText } = render(
       <Button onClick={handleClick}>Clickable</Button>
@@ -47,7 +41,7 @@ describe("LoginForm", () => {
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it.skip("validates that email is not blank", () => {
+  it("validates that email is not blank", () => {
     const { getByTestId } = render(
       <BrowserRouter>
         <LoginForm />
@@ -55,10 +49,10 @@ describe("LoginForm", () => {
     );
     fireEvent.click(getByTestId("login-btn"));
     expect(getByTestId("error-message")).toBeInTheDocument();
-    expect(onSave).not.toHaveBeenCalled();
+    expect(AxiosMock.post).not.toHaveBeenCalled();
   });
 
-  it.skip("validates that password cannot be blank", () => {
+  it("validates that password cannot be blank", () => {
     const { getByTestId } = render(
       <BrowserRouter>
         <LoginForm />
@@ -66,13 +60,11 @@ describe("LoginForm", () => {
     );
     fireEvent.click(getByTestId("login-btn"));
     expect(getByTestId("error-message")).toBeInTheDocument();
-    expect(onSave).not.toHaveBeenCalled();
+    expect(AxiosMock.post).not.toHaveBeenCalled();
   });
 
-  it("can successfully login after trying to submit an empty email and password", () => {    
-
-    axios.post = jest.fn().mockResolvedValue({});
-    const navigate = jest.fn();
+  it("can successfully login after trying to submit an empty email and password", () => {
+    AxiosMock.post = jest.fn().mockResolvedValue({ data: user });
     const { getByTestId, getByPlaceholderText } = render(
       <BrowserRouter>
         <LoginForm />
@@ -100,12 +92,9 @@ describe("LoginForm", () => {
 
     fireEvent.click(getByTestId("login-btn"));
 
-    // axios.post.toHaveBeenCalledWith(expectedParms);
-  //   expect(axios.post).toHaveBeenCalledWith(
-  //     "/login", {"email": "test@test", "password": "123"}
-  // );
-  // axios.post.mockResolvedValueOnce(() => Promise.navigate())
-
+    expect(AxiosMock.post).toHaveBeenCalledTimes(1);
+    expect(AxiosMock.post).toHaveBeenCalledWith(
+      "/login", { "email": "test@test", "password": "123" }
+    );
   });
-
 });
