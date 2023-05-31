@@ -13,18 +13,21 @@ function SignUpForm() {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
-  const [emailReg, setEmailReg] = useState("");
-  const [passwordReg, setPasswordReg] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const invalidFormMessage = validate(emailReg, name, passwordReg);
 
   const register = (event) => {
     event.preventDefault();
-    const data = { email: emailReg, name: name, password: passwordReg };
+    const data = { email: email, name: name, password: password };
 
-    if (invalidFormMessage) {
-      setError(invalidFormMessage);
+    if (validate(email, "email")) {
+      setError(validate(email, "email"));
+    } else if (validate(password, "password")) {
+      setError(validate(password, "password"));
+    } else if (validate(name, "name")) {
+      setError(validate(name, "name"));
     } else {
       axios
         .post("/signup", data)
@@ -60,9 +63,9 @@ function SignUpForm() {
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
-            value={emailReg}
+            value={email}
             onChange={(e) => {
-              setEmailReg(e.target.value);
+              setEmail(e.target.value);
             }}
             placeholder="Enter email"
           />
@@ -72,9 +75,9 @@ function SignUpForm() {
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
-            value={passwordReg}
+            value={password}
             onChange={(e) => {
-              setPasswordReg(e.target.value);
+              setPassword(e.target.value);
             }}
             placeholder="Password"
           />

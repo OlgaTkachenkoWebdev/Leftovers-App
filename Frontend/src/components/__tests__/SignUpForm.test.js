@@ -26,12 +26,12 @@ describe("SignUpForm", () => {
     );
     expect(getByTestId("signup-form")).toBeInTheDocument();
   });
-
+///
   it("renders a sugn up button", () => {
     const { getByText } = render(<Button>Sign Up</Button>);
     expect(getByText("Sign Up")).toBeVisible("form-btn");
   });
-
+///
   it("renders a clickable button", () => {
     const handleClick = jest.fn();
     const { getByText } = render(
@@ -41,7 +41,7 @@ describe("SignUpForm", () => {
     fireEvent.click(button);
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
-
+///
   it("validates that email is not blank", () => {
     const { getByTestId } = render(
       <BrowserRouter>
@@ -52,7 +52,7 @@ describe("SignUpForm", () => {
     expect(getByTestId("error-message")).toBeInTheDocument();
     expect(AxiosMock.post).not.toHaveBeenCalled();
   });
-
+///
   it("validates that name is not blank", () => {
     const { getByTestId } = render(
       <BrowserRouter>
@@ -63,7 +63,7 @@ describe("SignUpForm", () => {
     expect(getByTestId("error-message")).toBeInTheDocument();
     expect(AxiosMock.post).not.toHaveBeenCalled();
   });
-
+///
   it("validates that password cannot be blank", () => {
     const { getByTestId } = render(
       <BrowserRouter>
@@ -74,39 +74,56 @@ describe("SignUpForm", () => {
     expect(getByTestId("error-message")).toBeInTheDocument();
     expect(AxiosMock.post).not.toHaveBeenCalled();
   });
-
-  it.skip("can successfully login after trying to submit an empty email and password", () => {
-    AxiosMock.post = jest.fn().mockResolvedValue({ data: user });
+///
+  it("can successfully login after trying to submit an empty email and password", () => {
+    AxiosMock.post = jest.fn().mockResolvedValue({ data: newUser });
     const { getByTestId, getByPlaceholderText } = render(
       <BrowserRouter>
-        <LoginForm />
+        <SignUpForm />
       </BrowserRouter>
     );
 
-    fireEvent.click(getByTestId("login-btn"));
+    fireEvent.click(getByTestId("signup-btn"));
     expect(getByTestId("error-message")).toBeInTheDocument();
-    expect(getByTestId("error-message")).toHaveTextContent('Please enter your email')
+    expect(getByTestId("error-message")).toHaveTextContent('Please enter your email');
+    expect(AxiosMock.post).not.toHaveBeenCalled();
 
     fireEvent.change(getByPlaceholderText("Enter email"), {
-      target: { value: user.email }
+      target: { value: newUser.email }
     });
 
-    fireEvent.click(getByTestId("login-btn"));
+    fireEvent.click(getByTestId("signup-btn"));
     expect(getByTestId("error-message")).toBeInTheDocument();
     expect(getByTestId("error-message")).toHaveTextContent('Please enter your password')
+    expect(AxiosMock.post).not.toHaveBeenCalled();
 
     fireEvent.change(getByPlaceholderText("Enter email"), {
-      target: { value: user.email }
+      target: { value: newUser.email }
     });
-    fireEvent.change(getByPlaceholderText("Password"), {
-      target: { value: user.password }
+    fireEvent.change(getByPlaceholderText("Enter full name"), {
+      target: { value: newUser.name }
     });
 
-    fireEvent.click(getByTestId("login-btn"));
+    fireEvent.click(getByTestId("signup-btn"));
+    expect(getByTestId("error-message")).toBeInTheDocument();
+    expect(getByTestId("error-message")).toHaveTextContent('Please enter your password');
+    expect(AxiosMock.post).not.toHaveBeenCalled();
+
+    fireEvent.change(getByPlaceholderText("Enter email"), {
+      target: { value: newUser.email }
+    });
+    fireEvent.change(getByPlaceholderText("Enter full name"), {
+      target: { value: newUser.name }
+    });
+    fireEvent.change(getByPlaceholderText("Password"), {
+      target: { value: newUser.password }
+    });
+
+    fireEvent.click(getByTestId("signup-btn"));
 
     expect(AxiosMock.post).toHaveBeenCalledTimes(1);
     expect(AxiosMock.post).toHaveBeenCalledWith(
-      "/login", { "email": "test@test", "password": "123" }
+      "/signup", { "email": "test@test", "name": "New", "password": "123" }
     );
   });
 });
