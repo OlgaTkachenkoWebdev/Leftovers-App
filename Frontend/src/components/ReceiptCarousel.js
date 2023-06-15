@@ -1,16 +1,16 @@
-import React, { useState, useRef, useContext } from 'react';
-import "./ReceiptCarousel.css"
+import React, { useState, useRef, useContext } from "react";
+import "./ReceiptCarousel.css";
 
-import Icon from '@mdi/react';
-import { mdiHeartOutline, mdiClose, mdiCircleSmall } from '@mdi/js';
-import Filter from "./Filter"
+import Icon from "@mdi/react";
+import { mdiHeartOutline, mdiClose, mdiCircleSmall } from "@mdi/js";
+import Filter from "./Filter";
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Carousel from 'react-bootstrap/Carousel';
-import RecipesAlert from './RecipesAlert';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Carousel from "react-bootstrap/Carousel";
+import RecipesAlert from "./RecipesAlert";
 
 import { userRecipesContext } from "../providers/UsersRecipesProvider";
 
@@ -26,12 +26,12 @@ function ReceiptCarousel(props) {
   };
 
   const onRejectClick = () => {
-    addUserRecipes({...currentRecipe, "accepted": false} )
+    addUserRecipes({ ...currentRecipe, "accepted": false });
     ref.current.next();
   };
 
   const onLikeClick = () => {
-    addUserRecipes({...currentRecipe, "accepted": true} )
+    addUserRecipes({ ...currentRecipe, "accepted": true });
     ref.current.next();
   };
 
@@ -45,61 +45,61 @@ function ReceiptCarousel(props) {
           <h3> {recipe.title} </h3>
         </Carousel.Caption>
       </Carousel.Item>
-    )
+    );
   }
 
   function SpecialTags() {
     if (props.recipes.length === 0) {
-      return <h4> </h4>
+      return <h4> </h4>;
     }
     const loadedRecipes = props.recipes[index];
 
     let tags = [];
     if (loadedRecipes.dairyFree) {
-      tags.push('Dairy Free 🐮')
+      tags.push("Dairy Free 🐮");
     } if (loadedRecipes.glutenFree) {
-      tags.push('Gluten Free 🍞')
+      tags.push("Gluten Free 🍞");
     } if (loadedRecipes.vegan) {
-      tags.push('Vegan 🥬')
+      tags.push("Vegan 🥬");
     } if (loadedRecipes.vegetarian) {
-      tags.push('Vegetarian 🥗')
+      tags.push("Vegetarian 🥗");
     }
-    return tags.map(tag => <h5> {tag} </h5>)
+    return tags.map(tag => <h5> {tag} </h5>);
   }
 
   function UsedIngredientsTitle() {
     if (props.recipes[index].usedIngredients.length === 0) {
-      return <h4> </h4>
+      return <h4> </h4>;
     }
     if (props.recipes[index].usedIngredients.length > 0) {
-      return <h5><b>Used Leftovers</b></h5>
+      return <h5><b>Used Leftovers</b></h5>;
     }
   }
 
   function UsedIngredients() {
     if (props.recipes[index].usedIngredients.length === 0) {
-      return <h4> </h4>
+      return <h4> </h4>;
     }
     const usedIngredients = props.recipes[index].usedIngredients;
 
     return (
       usedIngredients.map(usedI =>
         <div> <Icon path={mdiCircleSmall} size={1} /> {usedI.name} ( {usedI.amount} {usedI.unit} )</div>
-      ))
+      ));
   };
 
   function MissedIngredientsTitle() {
     if (props.recipes[index].missedIngredients.length === 0) {
-      return <h4> </h4>
+      return <h4> </h4>;
     }
     if (props.recipes[index].missedIngredients.length > 0) {
-      return <h5><b>Missing Ingredients</b></h5>
+      return <h5><b>Missing Ingredients</b></h5>;
     }
   }
 
   function MissedIngredients() {
     if (props.recipes[index].missedIngredients.length === 0) {
-      return <h4> </h4>
+      return <h4> </h4>;
     }
 
     const missedIngredients = props.recipes[index].missedIngredients;
@@ -107,7 +107,7 @@ function ReceiptCarousel(props) {
     return (
       missedIngredients.map(missedI =>
         <div> <Icon path={mdiCircleSmall} size={1} /> {missedI.name} ( {missedI.amount} {missedI.unit} )</div>
-      ))
+      ));
   };
 
   return (
@@ -124,7 +124,7 @@ function ReceiptCarousel(props) {
             interval={null}
           >
             {recipesElements}
-          <Filter />
+            <Filter />
           </Carousel>
           {props.recipes[index] && <div className="buttons">
             <Col xs="auto"><Button className="reject btn" onClick={onRejectClick}><Icon path={mdiClose} size={1.5} /></Button></Col>
@@ -148,7 +148,7 @@ function ReceiptCarousel(props) {
         </Col>
       </Row>}
     </Container>
-  )
+  );
 }
 
 export default ReceiptCarousel;

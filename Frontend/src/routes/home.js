@@ -1,5 +1,5 @@
-import "./styles/Home.css"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./styles/Home.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
@@ -7,10 +7,10 @@ import ReceiptCarousel from "../components/ReceiptCarousel";
 import ShowSpinner from "../components/Spinner";
 import { Fragment, useContext, useEffect, useState } from "react";
 
-import { leftoversContext } from '../providers/LeftoversProvider';
+import { leftoversContext } from "../providers/LeftoversProvider";
 import { recipesContext } from "../providers/RecipesProvider";
 import { filtersContext } from "../providers/FiltersProvider";
-import { userRecipesContext } from "../providers/UsersRecipesProvider"
+import { userRecipesContext } from "../providers/UsersRecipesProvider";
 
 function Home() {
   const { leftovers } = useContext(leftoversContext);
@@ -57,9 +57,9 @@ function Home() {
     setShowSpinner(true);
     addRecipes({ "ingredients": formattedLeftovers, "diet": formattedDiets, "mealtype": formattedMealtypes, "intolerances": formattedIntolerances })
       .finally(() => {
-        setShowSpinner(false)
-      })
-  }, [leftovers, diets, mealtypes, intolerances])
+        setShowSpinner(false);
+      });
+  }, [leftovers, diets, mealtypes, intolerances]);
 
   return (
     <Fragment>

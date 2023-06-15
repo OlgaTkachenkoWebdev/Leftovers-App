@@ -1,17 +1,17 @@
 import "./MyRecipesElement.css";
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect } from "react";
 import { userRecipesContext } from "../providers/UsersRecipesProvider";
 import { ingredientsContext } from "../providers/IngredientsProvider";
 import PropTypes from 'prop-types'; 
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Accordion from 'react-bootstrap/Accordion';
-import { useAccordionButton } from 'react-bootstrap/AccordionButton';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Accordion from "react-bootstrap/Accordion";
+import { useAccordionButton } from "react-bootstrap/AccordionButton";
 
-import Icon from '@mdi/react';
-import { mdiClose, mdiCircleSmall } from '@mdi/js';
+import Icon from "@mdi/react";
+import { mdiClose, mdiCircleSmall } from "@mdi/js";
 
 function MyRecipesElement(props) {
   const myRecipe = props.recipe;

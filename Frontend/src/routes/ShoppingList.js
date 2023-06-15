@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import './styles/ShoppingList.css';
+import "./styles/ShoppingList.css";
 
 import { Fragment } from "react";
 
@@ -20,7 +20,7 @@ function ShoppingList() {
         </section>
       </main>
     </Fragment>
-  )
+  );
 }
 
 export default ShoppingList;

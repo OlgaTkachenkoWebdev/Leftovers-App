@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/SignUp-LogIn.css";
+import "./styles/SignUpLogIn.css";
 
-import Col from 'react-bootstrap/Col';
+import Col from "react-bootstrap/Col";
 
 import SignUpForm from "../components/Auth/SignUpForm";
 import Footer from "../components/Footer";

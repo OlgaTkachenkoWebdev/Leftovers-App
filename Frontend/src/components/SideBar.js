@@ -1,13 +1,14 @@
-import "./SideBar.css"
-import LeftoverElement from "./LeftoverElement"
-import React, { useState } from 'react';
-import Collapse from 'react-bootstrap/Collapse';
+import React, { useState, useContext } from "react";
+import "./SideBar.css";
 
-import Icon from '@mdi/react';
-import { mdiPlus, mdiCheck } from '@mdi/js';
+import Collapse from "react-bootstrap/Collapse";
 
-import { useContext } from 'react';
-import { leftoversContext } from '../providers/LeftoversProvider';
+import Icon from "@mdi/react";
+import { mdiPlus, mdiCheck } from "@mdi/js";
+
+import LeftoverElement from "./LeftoverElement";
+
+import { leftoversContext } from "../providers/LeftoversProvider";
 
 function SideBar() {
   const [open, setOpen] = useState(false);
@@ -16,18 +17,15 @@ function SideBar() {
 
   const onSubmit = function (event) {
     event.preventDefault();
-    leftover && addLeftover(leftover);
-    setLeftover("");
-    let existing = localStorage.getItem('leftovers');
+
+    let existing = localStorage.getItem("leftovers");
     existing = existing ? JSON.parse(existing) : {};
-    existing[leftover] = leftover;
-    localStorage.setItem('leftovers', JSON.stringify(existing));
-  }
+    localStorage.setItem("leftovers", JSON.stringify(existing));
+  };
 
   const listLeftovers = function () {
     let leftoverElements = [];
-    const storedLeftovers = localStorage.getItem('leftovers')
-    console.log("storedLeftovers", storedLeftovers)
+    const storedLeftovers = localStorage.getItem("leftovers");
     if (storedLeftovers) {
       leftoverElements.push(
         <div>
@@ -35,7 +33,7 @@ function SideBar() {
         </div>);
     }
     return leftoverElements;
-  }
+  };
 
   return (
     <div className="sideBar col-3">

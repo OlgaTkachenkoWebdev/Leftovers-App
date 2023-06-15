@@ -1,11 +1,11 @@
-import Icon from '@mdi/react';
-import { mdiClose } from '@mdi/js';
+import Icon from "@mdi/react";
+import { mdiClose } from "@mdi/js";
 
-import { useContext } from 'react';
-import { leftoversContext } from '../providers/LeftoversProvider';
+import { useContext } from "react";
+import { leftoversContext } from "../providers/LeftoversProvider";
 
 function LeftoverElement(props) {
-  console.log("propsleftoers", props)
+  console.log("propsleftoers", props);
   const { deleteLeftover } = useContext(leftoversContext);
 
   return (
@@ -15,10 +15,10 @@ function LeftoverElement(props) {
           <div className="leftoverListItem">
             <div>{name}</div>
             <Icon path={mdiClose} size={1.2} className="delete" onClick={() => deleteLeftover(props.leftover)} />
-          </div>)
+          </div>);
       })}
     </div>
-  )
+  );
 }
 
 export default LeftoverElement;

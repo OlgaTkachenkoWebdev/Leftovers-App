@@ -5,6 +5,6 @@ const validate = function (value, name) {
   } else {
     return("");
   }
-}
+};
 
 exports.validate = validate;

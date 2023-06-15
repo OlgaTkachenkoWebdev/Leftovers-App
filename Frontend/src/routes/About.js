@@ -1,9 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/About.css";
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/esm/Row';
-import Col from 'react-bootstrap/esm/Col';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 import Button from "react-bootstrap/Button";
 
 import Footer from "../components/Footer";
@@ -25,7 +25,7 @@ function About() {
           <h3 className="about-header-creator"> Meet the creator! </h3>
           <Row className="creator-row">
             <Col xs={4} >
-              <img src={process.env.PUBLIC_URL + '/olga.jpg'} width="75%"/>
+              <img src={process.env.PUBLIC_URL + "/olga.jpg"} width="75%" />
             </Col>
             <Col xs={8}>
               <p className="indent">Meet <b>Olga</b>, the creative mind behind RightOvers! Hailing from Vancouver, Canada, Olga is a aspiring full-stack web developer. With a passion for coding and a love for food, Olga came up with the idea for RightOvers as a way to combine her two interests and make a positive impact on reducing food waste.</p>

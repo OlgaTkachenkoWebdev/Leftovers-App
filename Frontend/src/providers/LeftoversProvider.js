@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
 // Create a Contexft
 export const leftoversContext = createContext();
@@ -10,18 +10,20 @@ export default function LeftoversProvider(props) {
   const [leftovers, setLeftovers] = useState({});
 
   // Functions to change  the leftovers state
-  const addLeftover = function(leftover) {
-    setLeftovers( prev => { 
-      return {...prev,
-    [leftover]: leftover
-  }});
+  const addLeftover = function (leftover) {
+    setLeftovers(prev => {
+      return {
+        ...prev,
+        [leftover]: leftover
+      };
+    });
   };
-  
-  const deleteLeftover = function(leftover) {
-    let updatedState = {...leftovers};
+
+  const deleteLeftover = function (leftover) {
+    let updatedState = { ...leftovers };
     delete updatedState[leftover];
     setLeftovers(updatedState);
-    localStorage.setItem('leftovers', JSON.stringify(updatedState));
+    localStorage.setItem("leftovers", JSON.stringify(updatedState));
   };
 
   const leftoversData = { addLeftover, deleteLeftover, leftovers };

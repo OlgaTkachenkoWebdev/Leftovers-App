@@ -12,10 +12,17 @@ const app = express();
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+const expiryDate = new Date(Date.now() + 60 * 60 * 1000 * 24 * 30 * 6) //6 months
 app.use(
   cookieSession({
-    name: "session",
+    name: "realsession",
     keys: ["supersecret!!"],
+    cookie: {
+      secure: true,
+      httpOnly: true,
+      expires: expiryDate
+    }
   })
 );
 

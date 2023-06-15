@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/SignUp-LogIn.css";
+import "./styles/SignUpLogIn.css";
 
 import Col from "react-bootstrap/Col";
 

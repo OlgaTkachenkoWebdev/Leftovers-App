@@ -27,7 +27,7 @@ function NavBar() {
         </Navbar.Collapse>
         <Nav className="userLinks">
           <p className="text-center mt-4 mb-4">Welcome back, {data}</p>
-          <Nav.Link className="NavLogOut">
+          <Nav.Link href="/logout" className="NavLogOut">
             <UserSettings />
           </Nav.Link>
         </Nav>

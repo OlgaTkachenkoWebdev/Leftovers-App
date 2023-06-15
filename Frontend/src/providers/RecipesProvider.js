@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 import axios from "axios";
 
 // Create a Contexft
@@ -11,14 +11,14 @@ axios.defaults.withCredentials = true;
 export default function RecipesProvider(props) {
   // Here is our Shared State Object
   const [recipes, setRecipes] = useState([]);
-  
+
   function addRecipes(params) {
-    return axios.get(`/recipes`, { params } )
-    .then((all) => {
-      setRecipes(() => all.data);
-    });    
+    return axios.get("/recipes", { params })
+      .then((all) => {
+        setRecipes(() => all.data);
+      });
   }
-  
+
   const recipesData = { addRecipes, recipes };
   // We can now use this as a component to wrap anything 
   // that needs our state
