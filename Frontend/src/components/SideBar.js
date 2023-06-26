@@ -6,7 +6,6 @@ import Collapse from "react-bootstrap/Collapse";
 import Icon from "@mdi/react";
 import { mdiPlus, mdiCheck } from "@mdi/js";
 
-import Element from "./LeftoverElement";
 import addToArrayLocalStorage from "./helpers/addArrayLocalStorage";
 import listArrayFromLocalStorage from "./helpers/listArrayFromLocalStorage";
 
@@ -19,16 +18,18 @@ function SideBar() {
 
   const onSubmit = function (event) {
     event.preventDefault();
-    leftover && addLeftover(leftover);
-    setLeftover("");
+    
+    if (leftover.length) {
+      addLeftover(leftover);
+      addToArrayLocalStorage("leftovers", leftover); 
+    }     
 
-    addToArrayLocalStorage("leftovers", leftover);
+    setLeftover("");
   };
 
   return (
     <div className="sideBar col-3">
       <div className="myLeftovers element">
-        <span className="dot"></span>
         <span className="category">My Leftovers</span>
         <Icon path={mdiPlus} size={1.3} className="plusSign"
           role="button"

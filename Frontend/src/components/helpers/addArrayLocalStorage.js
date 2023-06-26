@@ -5,4 +5,4 @@ const addToArrayLocalStorage = function(name, item) {
   localStorage.setItem(name, JSON.stringify(addedItem));
 };
 
-exports.addToArrayLocalStorage = addToArrayLocalStorage;
+export default addToArrayLocalStorage;

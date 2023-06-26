@@ -16,7 +16,7 @@
   align-items: center;
   padding-top: 3vh;
   margin-inline: auto;
-  width: 75%;
+  width: 65%;
   justify-content: space-around;
 }
 
@@ -24,28 +24,8 @@
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.dot {
-  opacity: 0;
-  transition: all 500ms ease-in-out;
-  height: 10px;
-  width: 10px;
-  background-color: #A60303;
-  border-radius: 50%;
-  display: inline-block;
-}
+
 .plusSign {
-  opacity: 0;
-  transition: all 500ms ease-in-out;
-}
-.element:hover > .dot {
-  opacity: 1.0;
-  height: 10px;
-  width: 10px;
-  background-color: #A60303;
-  border-radius: 50%;
-  display: inline-block;
-}
-.myLeftovers:hover > .plusSign {
     display: block;
     opacity: 1.0;
     color: #A60303;
@@ -56,24 +36,6 @@
   margin-top: 3vh;
   padding-left: 0;
   flex-direction: column;
-}
-
-.leftoverListItem {
-  display: flex;
-  margin-inline: auto;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-}
-
-.delete {
-  opacity: 0;
-  transition: all 500ms ease-in-out;
-}
-
-.leftoverListItem:hover > .delete {
-  opacity: 1.0;
-  color: #A60303;
 }
 
 .newItem {

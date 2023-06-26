@@ -1,4 +1,5 @@
-import Element from "./LeftoverElement";
+import ListElement from "../ListElement";
+
 const listArrayFromLocalStorage = function (name, elementId) {
   let elements = [];
   const storedElements = localStorage.getItem(name);
@@ -7,11 +8,11 @@ const listArrayFromLocalStorage = function (name, elementId) {
     for (const el of parsedElements) {
       elements.push(
         <div>
-          <Element key={item} leftover={el} id={elementId} />
+          <ListElement key={el} leftover={el} id={elementId} />
         </div>);
     }
   }
   return elements;
 };
 
-exports.listArrayFromLocalStorage = listArrayFromLocalStorage;
+export default listArrayFromLocalStorage;
