@@ -4,8 +4,7 @@ import { mdiClose } from "@mdi/js";
 import { useContext } from "react";
 import { leftoversContext } from "../providers/LeftoversProvider";
 
-function LeftoverElement(props) {
-  console.log("propsleftoers", props);
+function Element(props) {
   const { deleteLeftover } = useContext(leftoversContext);
 
   return (
@@ -21,4 +20,4 @@ function LeftoverElement(props) {
   );
 }
 
-export default LeftoverElement;
+export default Element;

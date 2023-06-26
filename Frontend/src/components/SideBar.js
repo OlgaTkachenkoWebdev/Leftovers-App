@@ -6,33 +6,23 @@ import Collapse from "react-bootstrap/Collapse";
 import Icon from "@mdi/react";
 import { mdiPlus, mdiCheck } from "@mdi/js";
 
-import LeftoverElement from "./LeftoverElement";
+import Element from "./LeftoverElement";
+import addToArrayLocalStorage from "./helpers/addArrayLocalStorage";
+import listArrayFromLocalStorage from "./helpers/listArrayFromLocalStorage";
 
 import { leftoversContext } from "../providers/LeftoversProvider";
 
 function SideBar() {
   const [open, setOpen] = useState(false);
   const [leftover, setLeftover] = useState("");
-  const { addLeftover, leftovers } = useContext(leftoversContext);
+  const { addLeftover } = useContext(leftoversContext);
 
   const onSubmit = function (event) {
     event.preventDefault();
+    leftover && addLeftover(leftover);
+    setLeftover("");
 
-    let existing = localStorage.getItem("leftovers");
-    existing = existing ? JSON.parse(existing) : {};
-    localStorage.setItem("leftovers", JSON.stringify(existing));
-  };
-
-  const listLeftovers = function () {
-    let leftoverElements = [];
-    const storedLeftovers = localStorage.getItem("leftovers");
-    if (storedLeftovers) {
-      leftoverElements.push(
-        <div>
-          <LeftoverElement key={leftover} leftover={Object.keys(JSON.parse(storedLeftovers))} />
-        </div>);
-    }
-    return leftoverElements;
+    addToArrayLocalStorage("leftovers", leftover);
   };
 
   return (
@@ -62,7 +52,7 @@ function SideBar() {
         </div>
       </Collapse>
       <ul className="leftoversList">
-        {listLeftovers()}
+        {listArrayFromLocalStorage("leftovers", "leftovers-list")}
       </ul>
     </div>
   );

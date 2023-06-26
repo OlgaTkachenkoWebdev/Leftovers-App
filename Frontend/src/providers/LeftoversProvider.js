@@ -8,6 +8,7 @@ export default function LeftoversProvider(props) {
 
   // Here is our Shared State Object
   const [leftovers, setLeftovers] = useState({});
+  console.log("leftoversState", leftovers);
 
   // Functions to change  the leftovers state
   const addLeftover = function (leftover) {
