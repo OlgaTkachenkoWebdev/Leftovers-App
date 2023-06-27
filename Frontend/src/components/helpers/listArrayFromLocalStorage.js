@@ -5,6 +5,7 @@ const listArrayFromLocalStorage = function (name, elementId) {
   const storedElements = localStorage.getItem(name);
   if (storedElements) {
     const parsedElements = JSON.parse(storedElements);
+    console.log("parsedElements", parsedElements);
     for (const el of parsedElements) {
       elements.push(
         <div>

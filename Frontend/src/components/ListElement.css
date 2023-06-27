@@ -3,7 +3,13 @@
   transition: all 500ms ease-in-out;
 }
 
-.leftoverListItem:hover > .delete {
+.leftoverListItem:hover>.delete {
   opacity: 1.0;
   color: #A60303;
+}
+
+#leftovers-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

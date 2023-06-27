@@ -6,7 +6,6 @@ import Collapse from "react-bootstrap/Collapse";
 import Icon from "@mdi/react";
 import { mdiPlus, mdiCheck } from "@mdi/js";
 
-import addToArrayLocalStorage from "./helpers/addArrayLocalStorage";
 import listArrayFromLocalStorage from "./helpers/listArrayFromLocalStorage";
 
 import { leftoversContext } from "../providers/LeftoversProvider";
@@ -21,7 +20,6 @@ function SideBar() {
     
     if (leftover.length) {
       addLeftover(leftover);
-      addToArrayLocalStorage("leftovers", leftover); 
     }     
 
     setLeftover("");

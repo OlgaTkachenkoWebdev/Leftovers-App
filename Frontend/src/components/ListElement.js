@@ -8,14 +8,13 @@ import { leftoversContext } from "../providers/LeftoversProvider";
 
 function ListElement(props) {
   const { deleteLeftover } = useContext(leftoversContext);
-  console.log("propsLeftover", props.leftover.length);
 
   if (props.leftover.length) {
     return (
       <div>
         <div className="leftoverListItem" id={props.id} key={props.key}>
           <div>{props.leftover}</div>
-          <Icon path={mdiClose} size={1.2} className="delete" onClick={() => deleteLeftover(props.leftover)} />
+          <Icon path={mdiClose} size={1} className="delete" onClick={() => deleteLeftover(props.leftover)} />
         </div>
       </div>
     );

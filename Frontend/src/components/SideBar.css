@@ -36,6 +36,8 @@
   margin-top: 3vh;
   padding-left: 0;
   flex-direction: column;
+  width: fit-content;
+  align-items: center;
 }
 
 .newItem {
