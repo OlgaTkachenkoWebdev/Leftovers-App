@@ -29,10 +29,10 @@ export default function LeftoversProvider(props) {
   const deleteLeftover = function (leftover) {
     setLeftovers((prev) => {
       const leftoverIndex = prev.indexOf(leftover);
-      const updatedLeftovers = prev.splice(leftoverIndex, 1);
-      setArrayLocalStorage("leftovers", updatedLeftovers)
+      const updatedLeftovers = prev.toSpliced(leftoverIndex, 1);
+      setArrayLocalStorage("leftovers", updatedLeftovers);
       return updatedLeftovers;
-      }
+    }
     );
   };
 

@@ -1,11 +1,10 @@
 import ListElement from "../ListElement";
-
-const listArrayFromLocalStorage = function (name, elementId) {
+// creates a list of items stored in Local Storage
+const listArrayFromLocalStorage = function (storageName, elementId) {
   let elements = [];
-  const storedElements = localStorage.getItem(name);
+  const storedElements = localStorage.getItem(storageName);
   if (storedElements) {
     const parsedElements = JSON.parse(storedElements);
-    console.log("parsedElements", parsedElements);
     for (const el of parsedElements) {
       elements.push(
         <div>
