@@ -1,13 +1,15 @@
 //gets array formatted as a string of items stored in local storage
 
 const getArrayFromLocalStorage = function (storageName) {
-  let elements = [];
   const storedElements = localStorage.getItem(storageName);
+  console.log("storedElements", storedElements);
   if (storedElements) {
     const parsedElements = JSON.parse(storedElements);
-    elements.push(parsedElements);
+    console.log("parsedElements", parsedElements);
+    return parsedElements;
+  } else {
+    return [];
   }
-  return elements.join();
 };
 
 export default getArrayFromLocalStorage;

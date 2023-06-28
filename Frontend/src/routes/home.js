@@ -54,9 +54,7 @@ function Home() {
 
   useEffect(() => {
     setShowSpinner(true);
-    console.log("leftovers", leftovers);
-    console.log("getArrayFromLocalStorage(leftovers)", getArrayFromLocalStorage("leftovers"));
-    addRecipes({ "ingredients": (leftovers ? leftovers.join() : getArrayFromLocalStorage("leftovers")), "diet": formattedDiets, "mealtype": formattedMealtypes, "intolerances": formattedIntolerances })
+    addRecipes({ "ingredients": leftovers.join(), "diet": formattedDiets, "mealtype": formattedMealtypes, "intolerances": formattedIntolerances })
       .finally(() => {
         setShowSpinner(false);
       });
