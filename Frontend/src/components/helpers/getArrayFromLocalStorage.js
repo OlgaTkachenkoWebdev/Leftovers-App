@@ -5,7 +5,6 @@ const getArrayFromLocalStorage = function (storageName) {
   console.log("storedElements", storedElements);
   if (storedElements) {
     const parsedElements = JSON.parse(storedElements);
-    console.log("parsedElements", parsedElements);
     return parsedElements;
   } else {
     return [];

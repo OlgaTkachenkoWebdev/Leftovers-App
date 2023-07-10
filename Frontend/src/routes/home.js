@@ -12,8 +12,6 @@ import { recipesContext } from "../providers/RecipesProvider";
 import { filtersContext } from "../providers/FiltersProvider";
 import { userRecipesContext } from "../providers/UsersRecipesProvider";
 
-import getArrayFromLocalStorage from "../components/helpers/getArrayFromLocalStorage";
-
 function Home() {
   const { leftovers } = useContext(leftoversContext);
   const { recipes, addRecipes } = useContext(recipesContext);

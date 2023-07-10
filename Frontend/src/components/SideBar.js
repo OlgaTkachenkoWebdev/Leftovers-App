@@ -13,7 +13,9 @@ import { leftoversContext } from "../providers/LeftoversProvider";
 function SideBar() {
   const [open, setOpen] = useState(false);
   const [leftover, setLeftover] = useState("");
-  const { addLeftover } = useContext(leftoversContext);
+  const { addLeftover, leftovers } = useContext(leftoversContext);
+
+  console.log('listArrayFromLocalStorage("leftovers", "leftovers-list")', listArrayFromLocalStorage("leftovers", "leftovers-list").toString());
 
   const onSubmit = function (event) {
     event.preventDefault();
@@ -21,7 +23,6 @@ function SideBar() {
     if (leftover.length) {
       addLeftover(leftover);
     }     
-
     setLeftover("");
   };
 
@@ -40,7 +41,6 @@ function SideBar() {
           <form autoComplete="off" onSubmit={onSubmit}>
             <input
               className="inputLeftover"
-              placeholder="Add new leftover"
               name="name"
               type="text"
               value={leftover}
@@ -51,7 +51,7 @@ function SideBar() {
         </div>
       </Collapse>
       <ul className="leftoversList">
-        {listArrayFromLocalStorage("leftovers", "leftovers-list")}
+        {listArrayFromLocalStorage("leftovers", "leftovers-list").toString() ? listArrayFromLocalStorage("leftovers", "leftovers-list") : !open &&  <div className="sideBarPlaceholder"> Press + to add leftovers</div>}
       </ul>
     </div>
   );

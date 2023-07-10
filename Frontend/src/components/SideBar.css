@@ -79,3 +79,8 @@ input:focus {
 .leftoverLine {
   display:flex;
 }
+
+.sideBarPlaceholder {
+  color: gray;
+  opacity: 50%;
+}
